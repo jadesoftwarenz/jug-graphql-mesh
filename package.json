@@ -4,8 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.34.0",
+    "@graphql-mesh/cache-file": "^0.6.14",
+    "@graphql-mesh/cache-inmemory-lru": "^0.5.19",
     "@graphql-mesh/cli": "^0.40.0",
+    "@graphql-mesh/graphql": "^0.18.13",
+    "@graphql-mesh/json-schema": "^0.19.2",
     "@graphql-mesh/openapi": "^0.18.15",
-    "graphql": "^15.6.0"
+    "graphql": "^15.6.0",
+    "node-fetch": "2",
+    "ts-node": "^10.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.2"
   }
 }

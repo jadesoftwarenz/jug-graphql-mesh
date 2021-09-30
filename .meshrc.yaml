@@ -2,14 +2,30 @@ sources:
   - name: JadeFC
     handler:
       openapi:
-        source: schemas/jug-api.yaml
+        source: ./schemas/jade-openapi.yaml
         baseUrl: http://a856e7a1e733b4d4192ca8d3341790e6-126565715.ap-southeast-2.elb.amazonaws.com/JadeRestSite/jadehttp.dll
-        customFetch: ./jade-fetch.js
+        customFetch: ./jade-fetch.ts
+
+  - name: Transactions
+    handler:
+      graphql:
+        endpoint: ./schemas/transactions.graphql
+
+require:
+  - ts-node/register/transpile-only
 
 additionalTypeDefs: |
     extend type FCAccount {
-      transactions: [String]
+      transactions: TransactionContainer!
     }
 
 additionalResolvers:
-  - ./resolvers/transactions.js
+  - ./resolvers/transactions.ts
+
+cache:
+    inmemoryLRU:
+        max: 5000
+
+serve:
+  browser: false
+

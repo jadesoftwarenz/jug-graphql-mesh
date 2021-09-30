@@ -1,0 +1,26 @@
+type Transaction {
+  """
+  The ID of the transaction
+  """
+  trans_id: String!
+
+  """
+  When the transaction occurred
+  """
+  timestamp: String!
+
+  """
+  Credit or Debit
+  """
+  type: String!
+
+  """
+  The amount moved in this transaction
+  """
+  amount: String!
+}
+
+type TransactionContainer {
+  count: Int!
+  items: [Transaction!]
+}
