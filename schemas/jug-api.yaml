@@ -1,0 +1,137 @@
+openapi: 3.0.2
+info:
+  title: Finanical REST API
+  description: JUG Financial Transaction Monitoring Demo
+  version: 1.0.0
+paths:
+  /Account/{id}:
+    get:
+      description: No description provided.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FCAccount'
+  /AllAccounts:
+    get:
+      description: No description provided.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FCAccount'
+  /AllClients:
+    get:
+      description: No description provided.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FCClient'
+  /Client/{id}:
+    get:
+      description: No description provided.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FCClient'
+components:
+  schemas:
+    AccountByIdDict:
+      type: array
+      items:
+        $ref: '#/components/schemas/FCAccount'
+    ClientByIdDict:
+      type: array
+      items:
+        $ref: '#/components/schemas/FCClient'
+    FCAccount:
+      type: object
+      properties:
+        date:
+          type: string
+          format: MicrosoftDateFormat
+          pattern: ^\\/Date\(-?[0-9]*\)\\/$
+        district:
+          type: integer
+          format: int32
+        frequency:
+          type: string
+        id:
+          type: string
+        myRoot:
+          $ref: '#/components/schemas/FCRoot'
+    FCClient:
+      type: object
+      properties:
+        address_1:
+          type: string
+        asdress_2:
+          type: string
+        city:
+          type: string
+        dateOfBirth:
+          type: string
+          format: MicrosoftDateFormat
+          pattern: ^\\/Date\(-?[0-9]*\)\\/$
+        district_id:
+          type: integer
+          format: int32
+        email:
+          type: string
+        firstName:
+          type: string
+        gender:
+          type: string
+        id:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+        myRoot:
+          $ref: '#/components/schemas/FCRoot'
+        phoneNumber:
+          type: string
+        ssn:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+    FCRoot:
+      type: object
+      properties:
+        allAccounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/FCAccount'
+        allClients:
+          type: array
+          items:
+            $ref: '#/components/schemas/FCClient'

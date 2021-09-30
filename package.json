@@ -1,0 +1,11 @@
+{
+  "name": "fc-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@graphql-mesh/cli": "^0.40.0",
+    "@graphql-mesh/openapi": "^0.18.15",
+    "graphql": "^15.6.0"
+  }
+}

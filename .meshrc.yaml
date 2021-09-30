@@ -1,0 +1,15 @@
+sources:
+  - name: JadeFC
+    handler:
+      openapi:
+        source: schemas/jug-api.yaml
+        baseUrl: http://a856e7a1e733b4d4192ca8d3341790e6-126565715.ap-southeast-2.elb.amazonaws.com/JadeRestSite/jadehttp.dll
+        customFetch: ./jade-fetch.js
+
+additionalTypeDefs: |
+    extend type FCAccount {
+      transactions: [String]
+    }
+
+additionalResolvers:
+  - ./resolvers/transactions.js
