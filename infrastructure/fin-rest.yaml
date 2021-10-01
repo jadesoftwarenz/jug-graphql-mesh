@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fin-rest
+spec:
+  ports:
+  - port: 6208
+  selector:
+    app: fin-rest
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fin-rest
+spec:
+  selector:
+    matchLabels:
+      app: fin-rest
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fin-rest
+    spec:
+      containers:
+      - image: public.ecr.aws/p5o1m4j3/fin-demo/rest-api:v3
+        name: fin-rest
+        ports:
+        - containerPort: 6208
+          name: fin-rest
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/os: windows
+      dnsPolicy: ClusterFirst

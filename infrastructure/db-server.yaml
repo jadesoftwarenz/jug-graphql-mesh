@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jade-rap
+spec:
+  ports:
+  - port: 9901
+  selector:
+    app: jade-rap
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jade-rap
+spec:
+  selector:
+    matchLabels:
+      app: jade-rap
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jade-rap
+    spec:
+      containers:
+      - image: public.ecr.aws/p5o1m4j3/fin-demo/db-server:v2
+        name: jade-rap
+        ports:
+        - containerPort: 9901
+          name: jade-rap
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: rap-database-volume
+            mountPath: c:\jade\system
+      nodeSelector:
+        kubernetes.io/os: windows
+      volumes:
+      - name: rap-database-volume
+        persistentVolumeClaim:
+           claimName: ebs-windows-pv-claim
