@@ -1,0 +1,39 @@
+﻿JadeVersionNumber 20.0.02
+JadePatchNumber 0
+Platform WindowsNT 10.0 
+Encoding UnicodeUTF8 
+Version 7/20.0.02 
+Schema FCRestSchema CompleteDefinition
+Locales 5129 
++++++AppGlobalDefinitions 
+<<<<<InstanceData 
+^^^^^Application 
+2317/Application __htmlAttributeOffsetDict Object 6 __inspectorObject Object 6 __jadeHttpConnection Object 6 __overridePatchNumber Integer 4 __patchControlConfig JadePatchControlConfig 6 __patchControlString String -1 __patchRuntimeCache JadePatchRuntimeCache 6 __patchVersionDict Object 6 __reportWriterRef Object 6 _aboutFormName String 101 _consoleMemRefs Binary 33 _defaultLocaleId Integer 4 _dynamicPropertyBag Object 6 _internetPipe Connection 6 _internetPipeName String -1 _modifiedBy String 31 _modifiedTimestamp TimeStamp 8 _numberOfPipes Integer 4 _patchVersion Integer 4 _propertyBag Binary -1 _restServicesOptions Integer 4 _sourceParcel JadeSourceParcel 6 _startupFormName String 101 _systemVersion String 9 _useXMLConfigFile Boolean 1 _useXMLDocumentParser Boolean 1 _webAppDirectory String -1 _webAppExtension JadeWebAppExtension 6 _webBaseURL String -1 _webConfigDynamicProperties Object 6 _webDelayBetweenApps Integer 4 _webDisplayMessages Boolean 1 _webDisplayPreference Character 1 _webEnabled Boolean 1 _webFinalizeMethod JadeMethod 6 _webHomePage String 101 _webInitializeMethod JadeMethod 6 _webIsSecure Boolean 1 _webLogFile Object 6 _webMachineName String -1 _webMaxHTMLSize Integer 4 _webMessage JadeWebMessage 6 _webMethodExecutionPrefix String 31 _webQueue JadeWebQueue 6 _webServiceClasses String -1 _webSession WebSession 6 _webSessionManager WebSessionManager 6 _webSessionTimeout Integer 4 _webShowContent Boolean 1 _webShowModal Boolean 1 _webStartupForm Form 6 _webStartupFormName String 101 _webStatusLineDisplay String -1 _webUseHTML32 Boolean 1 _webUseSessionHandling Boolean 1 _webVirtualDirectory String -1 _webWaitForReply Boolean 1 aboutForm Form 6 appVersion String 31 applicationType Character 1 controlSpacing Integer 4 currentLocale Locale 6 currentLocaleInfo LocaleFullInfo 6 defaultApp Boolean 1 defaultMdi Boolean 1 finalizeMethod Method 6 fontBold Boolean 1 fontName String 101 fontSize Real 8 formMargin Integer 4 heightSingleLineControl Integer 4 helpFile String -1 icon Binary -1 initializeMethod Method 6 jadeWebServiceManager JadeWebServiceManager 6 mdiStyle Integer 4 mdiWindowListOrder Integer 4 name String 101 printer Printer 6 schema Schema 6 showBubbleHelp Boolean 1 startupForm Form 6 useBorderStyleOnly Boolean 1 uuid Binary 16 webMinimumResponseTime Integer 4 
+344/1000183.18 12/FCRestSchema 0.0 0.0 0.0 0 0.0 0/ 0.0 0.0 0.0 0/ 0/ 0 0.0 0.0 0/ 6/cnwhm5 23/2021:09:28:23:15:59.606 0 0 0/ 0 0.0 0/ 7/20.0.02 0 0 0/ 0.0 0/ 0.0 0 0 0/ 0 0/ 0/ 0/ 0 0.0 0/ 0 0.0 0/ 0.0 0/ 0.0 0.0 0 0 0 0.0 0/ 0/ 0 0 0/ 0 0.0 0/ 1/G 4 0.0 0.0 1 0 0/ 0 6/Tahoma 8.25 7 14 0/ 0/ 0/ 0.0 0 0 12/FCRestSchema 0.0 1000001.8 0 0.0 0 0/ 0 
+389/1000183.19 10/FinRestApp 0.0 0.0 0.0 0 0.0 0/ 0.0 0.0 0.0 0/ 0/ 0 0.0 0.0 12/0.0.0.0:6208 6/cnwhm5 23/2021:09:28:23:39:21.436 1 0 0/ 0 0.0 0/ 7/20.0.02 0 0 0/ 0.0 0/ 0.0 0 0 1/N 0 0/ 0/ 0/ 0 0.0 7/0.0.0.0 0 0.0 0/ 0.0 14/FinRestService 0.0 0.0 0 0 0 0.0 0/ 0/ 0 0 7/FinRest 0 0.0 0/ 1/T 4 0.0 0.0 0 0 0/ 0 6/Tahoma 8.25 7 14 0/ 0/ 0/ 1000733.5 0 0 10/FinRestApp 0.0 1000001.8 0 0.0 1 0/ 0 
+*****Application
+^^^^^Class 
+6/Class 
+16/5.10 8/CheckBox 
+16/5.14 8/GroupBox 
+21/5.26 12/OptionButton 
+*****Class 
+>>>>>InstanceData 
+<<<<<CollectionData 
+^^^^^Application 
+68/Application threeDControls ClassColl 6 _webEventClasses ClassColl 6 
+47/1000183.18 11/Application 14/5.14 5.26 5.10 0/ 
+32/1000183.19 11/Application 0/ 0/ 
+*****Application 
+>>>>>CollectionData 
+<<<<<FixupData 
+>>>>>FixupData 
+-----AppGlobalDefinitions
++++++WebServiceManagerDefinitions 
+<<<<<InstanceData 
+^^^^^JadeWebServiceManager 
+486/JadeWebServiceManager _allowedSchemes String 11 _exposureList JadeExposedList 6 _useSOAP11 Boolean 1 _useSOAP12 Boolean 1 application Application 6 handleCircularReferences Boolean 1 jadeWebServiceProvider JadeWebServiceProvider 6 name String 101 provider Boolean 1 secureService Boolean 1 sessionHandling Boolean 1 soapException JadeSOAPException 6 supportLibrary String 61 targetNamespace String -1 useHttpGet Boolean 1 useHttpPost Boolean 1 useRPC Boolean 1 versionControl Boolean 1 
+82/1000733.5 4/http 0.0 0 0 1000183.19 0 0.0 0/ 1 0 0 0.0 12/jadehttp.dll 0/ 0 0 0 0 
+*****JadeWebServiceManager
+>>>>>InstanceData 
+-----WebServiceManagerDefinitions
