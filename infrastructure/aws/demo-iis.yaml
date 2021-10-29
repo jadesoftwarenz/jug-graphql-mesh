@@ -1,39 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iis-server
+  name: iis
 spec:
   selector:
     matchLabels:
-      app: iis-server
+      app: iis
       tier: backend
       track: stable
   replicas: 1
   template:
     metadata:
       labels:
-        app: iis-server
+        app: iis
         tier: backend
         track: stable
     spec:
       containers:
-      - name: iis-server
-        image: public.ecr.aws/p5o1m4j3/erewhon/iis-server:v1
+      - name: iis
+        image: public.ecr.aws/p5o1m4j3/fin-demo/iis:v2
         ports:
         - name: http
           containerPort: 80
         imagePullPolicy: IfNotPresent
-        command:
-        - powershell.exe
-        - -command
-        - "Add-WindowsFeature Web-Server; Invoke-WebRequest -UseBasicParsing -Uri 'https://dotnetbinaries.blob.core.windows.net/servicemonitor/2.0.1.6/ServiceMonitor.exe' -OutFile 'C:\\ServiceMonitor.exe'; echo '<html><body><br/><br/><marquee><H1>Welcome to Erewhon!!!<H1><marquee></body><html>' > C:\\inetpub\\wwwroot\\default.html; C:\\ServiceMonitor.exe 'w3svc'; "
       nodeSelector:
         kubernetes.io/os: windows
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: windows-iis-service
+  name: iis-service
   namespace: default
 spec:
   ports:
@@ -41,7 +37,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app: iis-server
+    app: iis
     tier: backend
     track: stable
   sessionAffinity: None

@@ -26,7 +26,7 @@ spec:
         app: fin-rest
     spec:
       containers:
-      - image: public.ecr.aws/p5o1m4j3/fin-demo/rest-api:v3
+      - image: public.ecr.aws/p5o1m4j3/fin-demo/rest-api:20.0.02-U
         name: fin-rest
         ports:
         - containerPort: 6208

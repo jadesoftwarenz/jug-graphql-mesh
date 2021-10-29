@@ -2,9 +2,7 @@
 FROM registry.jadeworld.io/jade/non-gui-client:20.0.02-x64-U
 
 COPY /system.ini c:/jade/
-
-RUN powershell `
-    Set-DnsClientGlobalSetting -SuffixSearchList ('default.svc.cluster.local', 'svc.cluster.local', 'cluster.local')
+COPY startup.ps1 c:/jade/bin/
 
 HEALTHCHECK --interval=20s --timeout=10s `
     CMD powershell -command `   
@@ -22,7 +20,8 @@ HEALTHCHECK --interval=20s --timeout=10s `
         }
 
 # define the entrypoint process
-ENTRYPOINT c:/jade/bin/jadclient.exe `
+ENTRYPOINT powershell -command c:\jade\bin\startup.ps1; `
+c:/jade/bin/jadclient.exe `
 ini=c:/jade/system.ini, path=c:/jade/system, `
 jadeLog.UseLogServer=true, jadeLog.LogServer=Console `
 jadelog.logfile=fin_rest_service, jadelog.logdirectory=c:/jade/logs server=remoteServer `

@@ -5,7 +5,7 @@
     },
     "Parameters" : {
         "BucketName": {
-            "Description": "Name of the S3 bucket you will deploy the CSV file to",
+            "Description": "Name of the S3 bucket you will upload the transactions.csv  file to",
             "Type": "String",
             "ConstraintDescription": "must be a valid bucket name."
         },
@@ -121,7 +121,6 @@
                                 "def lambda_handler(event, context):",
                                 "",  
                                 "",
-                                "   #get() does not store in memory",
                                 "   try:",
                                 "       obj = s3.Object(bucket, key).get()['Body']",
                                 "   except:",
@@ -134,7 +133,6 @@
                                 "   batch_size = 100",
                                 "   batch = []",
                                 "",
-                                "   #DictReader is a generator; not stored in memory",
                                 "   for row in csv.DictReader(codecs.getreader('utf-8')(obj)):",
                                 "      if len(batch) >= batch_size:",
                                 "         write_to_dynamo(batch)",
@@ -155,7 +153,7 @@
                                 "   try:",
                                 "      table = dynamodb.Table(tableName)",
                                 "   except:",
-                                "      print(\"Error loading DynamoDB table. Check if table was created correctly and environment variable.\")",
+                                "      print(\"Error loading DynamoDB table. Check if table was created correctly.\")",
                                 "",
                                 "   try:",
                                 "      with table.batch_writer() as batch:",
