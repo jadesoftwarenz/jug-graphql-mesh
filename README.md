@@ -1,18 +1,11 @@
 # JADE GraphQL Example
 
 ## Instructions
-First, check out this repo. It contains a Dockerfile so managing dependencies should be easy :) Ensure Docker is working correctly. If you're using Docker for Windows, you'll need to be targetting Linux containers, probably through an integration with WSL2.
+First, check out this repo. It contains a Dockerfile so managing dependencies should be easy :) Ensure Docker is working correctly. If you're using Docker for Windows, you'll need to be targeting Linux containers, probably through an integration with WSL2.
 
 Next, build the container:
 ```bash  
 docker build -t jug-graphql-mesh .
-```
-
-You'll need to provision a DynamoDB database with some transactions. You can run this script to do so:
-
-```bash
-!! TODO !!
-bash scripts/populate-dynamo.sh
 ```
 
 Then, run the Docker container:
