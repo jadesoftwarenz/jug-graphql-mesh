@@ -1,4 +1,4 @@
-# Erewhon cluster.yaml
+# demo cluster.yaml
 # An example ClusterConfig containing a Windows and a Linux node group
 ---
 apiVersion: eksctl.io/v1alpha5

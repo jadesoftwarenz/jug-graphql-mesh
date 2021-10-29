@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  fin-rap:
+    image: ${Registry:-}/${RepoPrefix:-}/db-server:${Tag:-20.0.02-U}
+    volumes:
+      - ${DatabasePath:-c:\findemo\system}:c:\jade\system
+      - ${JournalPath:-c:\findemo\journals}:c:\jade\journals
+      - ${LogPath:-c:\findemo\logs}:c:\jade\logs
+    ports:
+      - "${RapListenPort:-9901}:9901"
+
+  fin-iis:
+    image: ${Registry:-}/${RepoPrefix:-}/iis:v2
+    volumes:
+      # - ${IISLogPath:-c:\ecos\iis_logs\FailedReqLogFiles}:c:\inetpub\logs\FailedReqLogFiles\W3SVC1
+      - ${IISLogPath:-c:\findemo\iis_logs}:c:\bin_jadehttp\logs
+    ports:
+      - "6109:6109"  
+
+  fin-rest:
+    depends_on: 
+      - fin-rap
+      - fin-iis
+    image: ${Registry:-}/${RepoPrefix:-}/rest-api:${Tag:-20.0.02-U}
+    volumes:
+      - ${LogPath:-c:\findemo\logs}:c:\jade\logs
+    expose:
+      - "6208"
+
+networks:
+  default:
+    external: true  
+    name: nat

@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  fin-rap:
+    image: ${Registry:-}/${RepoPrefix:-}/db-server:${Tag:-20.0.02-U}
+    volumes:
+      - ${DatabasePath:-c:\findemo\system}:c:\jade\system
+      - ${JournalPath:-c:\findemo\journals}:c:\jade\journals
+      - ${LogPath:-c:\findemo\logs}:c:\jade\logs
+    ports:
+      - "${RapListenPort:-9901}:9901"
+
+networks:
+  default:
+    external: true  
+    name: nat

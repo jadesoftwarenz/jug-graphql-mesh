@@ -10,7 +10,7 @@
             "ConstraintDescription": "must be a valid bucket name."
         },
         "FileName": {
-            "Description": "Name of the S3 file (including suffix)",
+            "Description": "Name of the S3 file including suffix",
             "Type": "String",
             "ConstraintDescription": "Valid S3 file name."
         },
