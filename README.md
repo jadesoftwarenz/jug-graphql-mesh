@@ -2,7 +2,7 @@
 
 ## Architecture
 
-![Alt text](architecture.jpg?raw=true "JUG Architectural Diagram")
+![Alt text](./architecture.jpg?raw=true "JUG Architectural Diagram")
 
 ## Instructions
 
