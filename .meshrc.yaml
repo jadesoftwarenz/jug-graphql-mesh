@@ -3,7 +3,9 @@ sources:
     handler:
       openapi:
         source: ./schemas/jade-openapi.yaml
-        baseUrl: http://a856e7a1e733b4d4192ca8d3341790e6-126565715.ap-southeast-2.elb.amazonaws.com/JadeRestSite/jadehttp.dll
+        # Update the host name part of the URL to match the EXTERNAL-IP for the iis-service in the K8s cluster
+        # The EXTERNAL-IP  can be obtained by running 'kubectl get svc' from a command shell
+        baseUrl: http://acf5764ad19524ee480a946f65f3821e-900662398.ap-southeast-2.elb.amazonaws.com/JadeRestSite/jadehttp.dll
         customFetch: ./jade-fetch.ts
 
   - name: Transactions

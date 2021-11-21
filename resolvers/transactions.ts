@@ -15,7 +15,7 @@ export const resolvers: Resolvers = {
       }
 
       const command = new QueryCommand({
-        TableName: process.env.TRANSACTIONS_TABLE_NAME || "Transactions",
+        TableName: process.env.TRANSACTIONS_TABLE_NAME || "Jug-Transactions",
         KeyConditionExpression: "#aid = :account_id",
         ExpressionAttributeNames: {
           "#aid": "account_id",

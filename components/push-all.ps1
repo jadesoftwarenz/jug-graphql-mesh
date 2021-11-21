@@ -10,7 +10,7 @@ Push-Location $PSScriptRoot
 $startTime = Get-Date
 $registry = $awsRegistry 
 
-aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/p5o1m4j3
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $awsRegistry
 
 Write-FormattedOutput "Pushing component images to: $registry" -ForegroundColor Blue
 $dockerfiles = Get-ChildItem -Filter Dockerfile -recurse 

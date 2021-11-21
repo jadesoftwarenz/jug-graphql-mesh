@@ -16,7 +16,6 @@ try {
     $imageName = $(Get-Location).ToString().Split('\')[-1]
     $fullTag = "$repoPrefix/${imageName}:${jadeVersion}-${buildConfig}"
 
-    $binaryRepoDirectory = "$rootPath\$repoSubdir"
     Copy-Item -Path "${configDirectory}\$iniFile"  -Destination .
     
     Write-FormattedOutput "* Building image: $fullTag" -ForegroundColor Blue
