@@ -62,7 +62,7 @@ docker stop jug-mesh
 docker rm jug-mesh
 ```
 
-## Advanced - Provisioning the Demo Infrastucture in AWS
+## Advanced - Provisioning the Demo Infrastructure in AWS
 
 ### Prerequisites
 
