@@ -14,7 +14,7 @@ First, clone this repo, it contains:
 
 If you're using Docker for Windows, you'll need to be targeting Linux containers, probably through an integration with WSL2.
 
-Build the container:
+Build the container image:
 
 ```powershell
 docker build -t jug-graphql-mesh .
@@ -68,7 +68,9 @@ docker rm jug-mesh
 
 **AWS CLI** – A command line tool for working with AWS services, including Amazon EKS. See [Installing, updating, and uninstalling the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
-**kubectl** – A command line tool for working with Kubernetes clusters. See [Installing kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html>).
+Note: After you have installed the AWS CLI tool, you should perform a [Quick Setup](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html)
+
+**kubectl** – A command line tool for working with Kubernetes clusters. See [Installing kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html).
 
 **eksctl** – A command line tool for working with EKS clusters that automates many individual tasks. See [The eksctl command line utility](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
 
@@ -95,18 +97,33 @@ Note: The RAP pod contains a bootstrapping script that will do the following whe
 
 **Script 2** creates a CloudFormation stack to automatically provision the following resources:
 
-- A DynamoDB table named jug-transactions
-- An S3 bucket named jug-transactions where transactions.csv files are loaded from
-- A Lambda function to bulk load the jug-transactions table from .csv files in the S3 bucket
+- A DynamoDB table named **Jug-Transactions**
+- An S3 bucket named **jug-transactions** where **transaction.csv** files are loaded from
+- A Lambda function to bulk load the **Jug-Transactions** table from .csv files in the S3 bucket
+
+### Upload the transactions.csv File
+
+1. Sign in to the AWS Management Console and open the Amazon S3 console at (<https://console.aws.amazon.com/s3/>).
+2. In the Buckets list, select the **jug-transactions** bucket
+3. Choose Upload
+4. In the Upload window, do one of the following:
+
+- Drag and drop the **data\transactions.csv** to the Upload window
+- Choose Add files, browse to **data\transactions.csv**, and choose Open
+
+Uploading this file will trigger an event that runs the lambda function to load the transactions.csv file into the **Jug-Transactions** DynamoDb table. The data load will take a few minutes to complete, visit <https://console.aws.amazon.com/dynamodbv2/> to check on progress.
 
 ### Edit the GraphQL mesh Configuration
 
 1. cd into the top level directory and open **.meshrc.yaml** in a suitable editor
 2. Change the host name part of the URL to match the EXTERNAL-IP for the iis-service in the K8s cluster. The EXTERNAL-IP  can be obtained by running **kubectl get svc** from a command shell
 
-## Run the GraphQL Mesh Server
+## Build and Run the GraphQL Mesh Server
 
-Now you can run the GraphQL Mesh Server with your newly provisioned AWS infrastructure. See above for instructions.
+After editing **.meshrc.yaml** you need to (re)build the GraphQL Mesh Server.
+Now you are ready to run the GraphQL Mesh Server with your newly provisioned AWS infrastructure.
+
+See above for instructions.
 
 ### Tear down resources
 
