@@ -103,7 +103,7 @@ Note: The RAP pod contains a bootstrapping script that will do the following whe
 
 ### Upload the transactions.csv File
 
-1. Sign in to the AWS Management Console and open the Amazon S3 console at (<https://console.aws.amazon.com/s3/>).
+1. Sign in to the AWS Management Console and open the Amazon S3 console at <https://console.aws.amazon.com/s3/>.
 2. In the Buckets list, select the **jug-transactions** bucket
 3. Choose Upload
 4. In the Upload window, do one of the following:
@@ -118,7 +118,7 @@ Uploading this file will trigger an event that runs the lambda function to load 
 1. cd into the top level directory and open **.meshrc.yaml** in a suitable editor
 2. Change the host name part of the URL to match the EXTERNAL-IP for the iis-service in the K8s cluster. The EXTERNAL-IP  can be obtained by running **kubectl get svc** from a command shell
 
-## Build and Run the GraphQL Mesh Server
+### Build and Run the GraphQL Mesh Server
 
 After editing **.meshrc.yaml** you need to (re)build the GraphQL Mesh Server.
 Now you are ready to run the GraphQL Mesh Server with your newly provisioned AWS infrastructure.
@@ -127,7 +127,7 @@ See above for instructions.
 
 ### Tear down resources
 
-When we have finished with the demo, it is good practice to remove the various resources we provisioned to avoid accruing costs.
+When finished with the demo, it is good practice to remove the various provisioned resources to avoid accruing costs.
 
 ```powershell
 # First empty the S3 bucket (we can't remove a non-empty bucket)
