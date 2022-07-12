@@ -4,65 +4,17 @@
 
 ![Alt text](./Architecture.jpg?raw=true "JUG Architectural Diagram")
 
-## Building and Running the GraphQL Mesh Server
+## Building and Running the Demo
 
 First, clone this repo, it contains:
 
-- A DockerFile to build the GraphQL mesh server image
 - DockerFiles to build JADE RAP, REST WS Provider and IIS images
 - IaC templates and scripts to deploy everything running in Amazon Web Services (AWS)
+- A DockerFile to build the GraphQL mesh server image
 
 If you're using Docker for Windows, you'll need to be targeting Linux containers, probably through an integration with WSL2.
 
-Build the container image:
-
-```powershell
-docker build -t jug-graphql-mesh .
-```
-
-Then, run the Docker container:
-
-```powershell
- docker run -d `
- -e AWS_ACCESS_KEY_ID=XXX `
- -e AWS_SECRET_ACCESS_KEY=XXX `
- -e AWS_REGION=ap-southeast-2 `
- -p 4000:4000 `
- --name jug-mesh jug-graphql-mesh 
-```
-
-(where `xxx` is your AWS IAM access key ID and secret key)
-
-Then, if you navigate to <http://localhost:4000>, you will see a GraphQL explorer where you can try out the JADE GraphQL Mesh.
-
-## Example Query
-
-```graphql
-query MyQuery {
-  getAccountId(id: "A00003558") {
-    id
-    transactions {
-      count
-      items {
-        timestamp
-        type
-        amount
-      }
-    }
-  }
-}
-```
-
-## To Stop and Remove the GraphQL Mesh Container
-
-```powershell
-# stop the container
-docker stop jug-mesh
-# remove it 
-docker rm jug-mesh
-```
-
-## Advanced - Provisioning the Demo Infrastructure in AWS
+## Provisioning the Demo Infrastructure in AWS
 
 ### Prerequisites
 
@@ -113,6 +65,8 @@ Note: The RAP pod contains a bootstrapping script that will do the following whe
 
 Uploading this file will trigger an event that runs the lambda function to load the transactions.csv file into the **Jug-Transactions** DynamoDb table. The data load will take a few minutes to complete, visit <https://console.aws.amazon.com/dynamodbv2/> to check on progress.
 
+Now you are ready to run the GraphQL Mesh Server with your newly provisioned AWS infrastructure.
+
 ### Edit the GraphQL mesh Configuration
 
 1. cd into the top level directory and open **.meshrc.yaml** in a suitable editor
@@ -120,12 +74,57 @@ Uploading this file will trigger an event that runs the lambda function to load 
 
 ### Build and Run the GraphQL Mesh Server
 
-After editing **.meshrc.yaml** you need to (re)build the GraphQL Mesh Server.
-Now you are ready to run the GraphQL Mesh Server with your newly provisioned AWS infrastructure.
+After editing **.meshrc.yaml** you need to build the GraphQL Mesh Server.
 
-See above for instructions.
+### Build the container image
 
-### Tear down resources
+```powershell
+docker build -t jug-graphql-mesh .
+```
+
+Then, run the Docker container:
+
+```powershell
+ docker run -d `
+ -e AWS_ACCESS_KEY_ID=XXX `
+ -e AWS_SECRET_ACCESS_KEY=XXX `
+ -e AWS_REGION=ap-southeast-2 `
+ -p 4000:4000 `
+ --name jug-mesh jug-graphql-mesh 
+```
+
+(where `xxx` is your AWS IAM access key ID and secret key)
+
+Then, if you navigate to <http://localhost:4000>, you will see a GraphQL explorer where you can try out the JADE GraphQL Mesh.
+
+### Example Query
+
+```graphql
+query MyQuery {
+  getAccountId(id: "A00003558") {
+    id
+    transactions {
+      count
+      items {
+        timestamp
+        type
+        amount
+      }
+    }
+  }
+}
+```
+
+### To Stop and Remove the GraphQL Mesh Container
+
+```powershell
+# stop the container
+docker stop jug-mesh
+# remove it 
+docker rm jug-mesh
+```
+
+## Tear down AWS resources
 
 When finished with the demo, it is good practice to remove the various provisioned resources to avoid accruing costs.
 
